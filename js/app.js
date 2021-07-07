@@ -1,5 +1,6 @@
 'use strict';
 
+
 // Cart constructor.
 const Cart = function(items) {
   // this.items is an array of CartItem instances.
@@ -8,10 +9,16 @@ const Cart = function(items) {
 
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  const newCartItem = new CartItem(product, quantity);
+  cart.items.push(newCartItem );
+
 };
+
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  let cartContent = JSON.stringify(cart.items);
+  localStorage.setItem('cart',cartContent);
 };
 
 Cart.prototype.removeItem = function(item) {
