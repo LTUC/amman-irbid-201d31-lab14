@@ -5,7 +5,7 @@
 const table = document.getElementById('cart');
 let tbodyEl = document.getElementById('body');
 table.appendChild(tbodyEl);
-tbodyEl.addEventListener('click', removeItemFromCart);
+// tbodyEl.addEventListener('click', removeItemFromCart);
 
 let cart;
 
@@ -43,6 +43,7 @@ for (let i = 0; i < cart.items.length; i++) {
    aEl =document.createElement('a');
   aEl.setAttribute('id',`${i}`)
   aEl.textContent='x';
+  aEl.addEventListener('click', removeItemFromCart);
   tdEl.appendChild(aEl);
   trEl.appendChild(tdEl);
   let tdEl1 = document.createElement('td');
@@ -64,9 +65,9 @@ for (let i = 0; i < cart.items.length; i++) {
 function removeItemFromCart(event) {
   
 
-  console.log();
+  console.log(event.target.id);
   event.preventDefault();
-cart.removeItem() ;
+cart.removeItem(event.target.id) ;
 cart.saveToLocalStorage();
 renderCart();
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
